@@ -1,11 +1,14 @@
 use Mix.Config
 
+
 # Configure your database
 config :mymapsv1, Mymapsv1.Repo,
-  username: "postgres_dev",
-  password: "postgres_dev",
+  username: "postgres",
+  password: "postgres",
   database: "mymapsv1_dev",
   hostname: "localhost",
+  adapter: Ecto.Adapters.Postgres,
+  types: Mymapsv1.PostgresTypes,
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
 

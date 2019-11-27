@@ -1,0 +1,5 @@
+<h1>Edit Consumer</h1>
+
+<%= render "form.html", Map.put(assigns, :action, Routes.consumer_path(@conn, :update, @consumer)) %>
+
+<span><%= link "Back", to: Routes.consumer_path(@conn, :index) %></span>

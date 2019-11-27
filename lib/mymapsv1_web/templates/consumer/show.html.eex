@@ -1,0 +1,8 @@
+<h1>Show Consumer</h1>
+
+<ul>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.consumer_path(@conn, :edit, @consumer) %></span>
+<span><%= link "Back", to: Routes.consumer_path(@conn, :index) %></span>

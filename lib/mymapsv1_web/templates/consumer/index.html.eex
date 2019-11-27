@@ -1,0 +1,24 @@
+<h1>Listing Consumers</h1>
+
+<table>
+  <thead>
+    <tr>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for consumer <- @consumers do %>
+    <tr>
+
+      <td>
+        <span><%= link "Show", to: Routes.consumer_path(@conn, :show, consumer) %></span>
+        <span><%= link "Edit", to: Routes.consumer_path(@conn, :edit, consumer) %></span>
+        <span><%= link "Delete", to: Routes.consumer_path(@conn, :delete, consumer), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Consumer", to: Routes.consumer_path(@conn, :new) %></span>

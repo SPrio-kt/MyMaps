@@ -1,0 +1,8 @@
+<h1>Show Customer</h1>
+
+<ul>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.customer_path(@conn, :edit, @customer) %></span>
+<span><%= link "Back", to: Routes.customer_path(@conn, :index) %></span>

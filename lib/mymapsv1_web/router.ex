@@ -16,6 +16,10 @@ defmodule Mymapsv1Web.Router do
   scope "/", Mymapsv1Web do
     pipe_through :browser
 
+    resources "/users", UserController
+    resources "/consumers", ConsumerController
+    resources "/customers", CustomerController
+    resources "/employees", EmployeeController
     get "/", PageController, :index
   end
 
