@@ -4,6 +4,7 @@ defmodule Mymapsv1Web.Router do
   pipeline :browser do
     plug :accepts, ["html"]
     plug :fetch_session
+    plug PhoenixGon.Pipeline
     plug :fetch_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
@@ -20,6 +21,8 @@ defmodule Mymapsv1Web.Router do
     resources "/consumers", ConsumerController
     resources "/customers", CustomerController
     resources "/employees", EmployeeController
+    get "/maps", EmployeeController, :maps
+    patch "/employees/all_posi", EmployeeController, :all_posi
     get "/", PageController, :index
   end
 

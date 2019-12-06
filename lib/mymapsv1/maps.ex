@@ -313,4 +313,35 @@ defmodule Mymapsv1.Maps do
   def change_customer(%Customer{} = customer) do
     Customer.changeset(customer, %{})
   end
+
+  def all_employees(attrs \\ %{}) do
+
+    Postgrex.Types.define(Mymapsv1.PostgresTypes, [Geo.PostGIS.Extension], [])
+    opts = [hostname: "localhost", username: "postgres",password: "postgres", database: "mymapsv1_dev", types: Mymapsv1.PostgresTypes]
+    {:ok, pid} = Postgrex.start_link(opts)
+    {:ok, data} = Postgrex.query(pid, "SELECT * FROM employees",[])
+    datas = data.rows
+    map_data = datas |> Enum.map(fn [id, %Geo.Point{coordinates: {lat, long}}]-> %{id: id, lat: lat, long: long} end)
+  end
+
+  def distance_check() do
+    alias :math, as: Math
+
+    #pi
+    #pi = 3.141592653589793
+    #me
+    lat1 = (Math.pi * 22.573128) /180
+    lon1 = (Math.pi * 88.433867) /180
+    #user
+    lat2 = (Math.pi * 22.573584) /180
+    lon2 = (Math.pi * 88.437781) /180
+
+    #earth radius
+    e_r = 6371;
+    x = (lon2-lon1) * Math.cos((lat1+lat2)/2);
+    y = (lat2-lat1);
+    d = Math.sqrt(x*x + y*y) * e_r;
+
+    IO.puts(d*1000)
+  end
 end

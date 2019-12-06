@@ -59,4 +59,14 @@ defmodule Mymapsv1Web.EmployeeController do
     |> put_flash(:info, "Employee deleted successfully.")
     |> redirect(to: Routes.employee_path(conn, :index))
   end
+
+  def maps(conn, _params) do
+    render(conn, "maps.html")
+  end
+
+  def all_posi(conn,_params) do
+    employees = Maps.all_employees
+
+    send_resp conn, 200, employees |> Poison.encode!()
+  end
 end
